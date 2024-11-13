@@ -1,0 +1,56 @@
+diff --git a/node_modules/@azesmway/react-native-unity/.DS_Store b/node_modules/@azesmway/react-native-unity/.DS_Store
+new file mode 100644
+index 0000000..9bc67e2
+Binary files /dev/null and b/node_modules/@azesmway/react-native-unity/.DS_Store differ
+diff --git a/node_modules/@azesmway/react-native-unity/ios/RNUnityView.mm b/node_modules/@azesmway/react-native-unity/ios/RNUnityView.mm
+index 6257f0b..0970b28 100644
+--- a/node_modules/@azesmway/react-native-unity/ios/RNUnityView.mm
++++ b/node_modules/@azesmway/react-native-unity/ios/RNUnityView.mm
+@@ -1,5 +1,9 @@
+ #import "RNUnityView.h"
+ 
++#ifdef DEBUG
++#include <mach-o/ldsyms.h>
++#endif
++
+ #ifdef RCT_NEW_ARCH_ENABLED
+ using namespace facebook::react;
+ #endif
+@@ -18,7 +22,15 @@
+     UnityFramework* ufw = [bundle.principalClass getInstance];
+     if (![ufw appController])
+     {
+-        [ufw setExecuteHeader: &_mh_execute_header];
++    		/*
++         * Make it work with xcode 16
++         * See: https://github.com/azesmway/react-native-unity/pull/133
++         */
++        #ifdef DEBUG
++				      [ufw setExecuteHeader: &_mh_dylib_header];
++				#else
++				      [ufw setExecuteHeader: &_mh_execute_header];
++				#endif
+     }
+ 
+     [ufw setDataBundleId: [bundle.bundleIdentifier cStringUsingEncoding:NSUTF8StringEncoding]];
+diff --git a/node_modules/@azesmway/react-native-unity/src/UnityView.tsx b/node_modules/@azesmway/react-native-unity/src/UnityView.tsx
+index d9f1b9c..12ff3e9 100644
+--- a/node_modules/@azesmway/react-native-unity/src/UnityView.tsx
++++ b/node_modules/@azesmway/react-native-unity/src/UnityView.tsx
+@@ -2,7 +2,7 @@ import React from 'react';
+ 
+ import NativeUnityView, { Commands } from './specs/UnityViewNativeComponent';
+ import type { DirectEventHandler } from 'react-native/Libraries/Types/CodegenTypes';
+-import { Platform } from 'react-native';
++import { Platform, ViewStyle } from 'react-native';
+ 
+ type UnityViewContentUpdateEvent = Readonly<{
+   message: string;
+@@ -11,6 +11,7 @@ type UnityViewContentUpdateEvent = Readonly<{
+ type RNUnityViewProps = {
+   androidKeepPlayerMounted?: boolean;
+   fullScreen?: boolean;
++	style?: ViewStyle;
+   onUnityMessage?: DirectEventHandler<UnityViewContentUpdateEvent>;
+   onPlayerUnload?: DirectEventHandler<UnityViewContentUpdateEvent>;
+   onPlayerQuit?: DirectEventHandler<UnityViewContentUpdateEvent>;
