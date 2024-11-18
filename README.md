@@ -13,18 +13,18 @@ Zoo Match is a classic match-3 puzzle game where players move and match animal t
 Clone this React Native Repo:
 
 ```bash
-git clone https://github.com/vsnaichuk/zoo-match-mobile.git
+git clone [https://github.com/vsnaichuk/react-native-unity-game.git](https://github.com/vsnaichuk/react-native-unity-game)
 ```
 
-Clone the [Unity Game Repo](https://github.com/vsnaichuk/zoo-match-game) to a separate directory.
+Clone the [Unity Game Repo](https://github.com/vsnaichuk/unity-game) to a separate directory.
 ```bash
-git clone https://github.com/vsnaichuk/zoo-match-game
+git clone https://github.com/vsnaichuk/unity-game
 ```
 
 ## Add Unity Game Build
 You need to create _Android_ / _iOS_ game build and move it to `<THIS_RN_PROJECT>/unity/builds`
 
-1. Open [Unity Game Repo](https://github.com/vsnaichuk/zoo-match-game) in Unity 6
+1. Open [Unity Game Repo](https://github.com/vsnaichuk/unity-game) in Unity 6
 2. Export Unity game to `<THIS_RN_PROJECT>/unity/builds/android`
 
 ## Install Dependencies
