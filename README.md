@@ -1,6 +1,6 @@
 
 
-Zoo Match is a classic match-3 puzzle game where players move and match animal tiles to create sets of three or more. Using the `react-native-unity` library, Unity's game functionality is seamlessly integrated into the React Native app.
+Zoo Match is a classic match-3 puzzle game where players move and match animal tiles to create sets of three or more. Using the [react-native-unity](https://github.com/azesmway/react-native-unity) library, Unity's game functionality is seamlessly integrated into the React Native app.
 
 ## Prerequisites
 
@@ -25,7 +25,8 @@ git clone https://github.com/vsnaichuk/unity-game.git
 You need to create _Android_ / _iOS_ game build and move it to `<THIS_RN_PROJECT>/unity/builds`
 
 1. Open [Unity Game Repo](https://github.com/vsnaichuk/unity-game) in Unity 6
-2. Export Unity game to `<THIS_RN_PROJECT>/unity/builds/android`
+2. For Android: Build and move the game to `<THIS_RN_PROJECT>/unity/builds/android`
+3. For iOS: Build the game and follow [this instruction](https://github.com/azesmway/react-native-unity?tab=readme-ov-file#export-ios-unity-project)
 
 ## Install Dependencies
 
