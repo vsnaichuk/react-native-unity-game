@@ -13,12 +13,12 @@ Zoo Match is a classic match-3 puzzle game where players move and match animal t
 Clone this React Native Repo:
 
 ```bash
-git clone [https://github.com/vsnaichuk/react-native-unity-game.git](https://github.com/vsnaichuk/react-native-unity-game)
+git clone https://github.com/vsnaichuk/react-native-unity-game.git
 ```
 
 Clone the [Unity Game Repo](https://github.com/vsnaichuk/unity-game) to a separate directory.
 ```bash
-git clone https://github.com/vsnaichuk/unity-game
+git clone https://github.com/vsnaichuk/unity-game.git
 ```
 
 ## Add Unity Game Build
